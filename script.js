@@ -1,46 +1,47 @@
 let produtos = [
-    {nome: "Arroz", preco: 25, imagem: "img/arroz.png", quantidade: 0},
-    {nome: "Feijão", preco: 10, imagem: "img/feijao.png", quantidade: 0},
-    {nome: "Macarrão", preco: 8, imagem: "img/macarrao.png", quantidade: 0},
-    {nome: "Leite", preco: 6, imagem: "img/leite.png", quantidade: 0},
-    {nome: "Pão", preco: 7, imagem: "img/pao.png", quantidade: 0},
-    {nome: "Café", preco: 15, imagem: "img/cafe.png", quantidade: 0},
-    {nome: "Açúcar", preco: 5, imagem: "img/acucar.png", quantidade: 0},
-    {nome: "Óleo", preco: 9, imagem: "img/oleo.png", quantidade: 0},
-    {nome: "Sal", preco: 3, imagem: "img/sal.png", quantidade: 0},
-    {nome: "Manteiga", preco: 12, imagem: "img/manteiga.png", quantidade: 0},
-    {nome: "Queijo", preco: 18, imagem: "img/queijo.png", quantidade: 0},
-    {nome: "Presunto", preco: 14, imagem: "img/presunto.png", quantidade: 0},
-    {nome: "Refrigerante", preco: 9, imagem: "img/refrigerante.png", quantidade: 0},
-    {nome: "Suco", preco: 8, imagem: "img/suco.png", quantidade: 0},
-    {nome: "Biscoito", preco: 4, imagem: "img/biscoito.png", quantidade: 0},
-    {nome: "Chocolate", preco: 7, imagem: "img/chocolate.png", quantidade: 0},
-    {nome: "Sabonete", preco: 3, imagem: "img/sabonete.png", quantidade: 0},
-    {nome: "Shampoo", preco: 16, imagem: "img/shampoo.png", quantidade: 0},
-    {nome: "Detergente", preco: 4, imagem: "img/detergente.png", quantidade: 0},
-    {nome: "Papel Higiênico", preco: 20, imagem: "img/papel_higienico.png", quantidade: 0},
-    {nome: "Banana", preco: 6, imagem: "img/banana.png", quantidade: 0}
+    {nome: "Arroz", preco: 27.90, imagem: "img/arroz.png", quantidade: 0},
+    {nome: "Feijão", preco: 9.49, imagem: "img/feijao.png", quantidade: 0},
+    {nome: "Macarrão", preco: 6.99, imagem: "img/macarrao.png", quantidade: 0},
+    {nome: "Leite", preco: 5.89, imagem: "img/leite.png", quantidade: 0},
+    {nome: "Pão", preco: 8.50, imagem: "img/pao.png", quantidade: 0},
+    {nome: "Café", preco: 18.75, imagem: "img/cafe.png", quantidade: 0},
+    {nome: "Açúcar", preco: 4.89, imagem: "img/acucar.png", quantidade: 0},
+    {nome: "Óleo", preco: 8.99, imagem: "img/oleo.png", quantidade: 0},
+    {nome: "Sal", preco: 2.79, imagem: "img/sal.png", quantidade: 0},
+    {nome: "Manteiga", preco: 14.99, imagem: "img/manteiga.png", quantidade: 0},
+    {nome: "Queijo", preco: 21.90, imagem: "img/queijo.png", quantidade: 0},
+    {nome: "Presunto", preco: 16.49, imagem: "img/presunto.png", quantidade: 0},
+    {nome: "Refrigerante", preco: 9.99, imagem: "img/refrigerante.png", quantidade: 0},
+    {nome: "Suco", preco: 7.49, imagem: "img/suco.png", quantidade: 0},
+    {nome: "Biscoito", preco: 5.29, imagem: "img/biscoito.png", quantidade: 0},
+    {nome: "Chocolate", preco: 8.99, imagem: "img/chocolate.png", quantidade: 0},
+    {nome: "Sabonete", preco: 3.49, imagem: "img/sabonete.png", quantidade: 0},
+    {nome: "Shampoo", preco: 17.90, imagem: "img/shampoo.png", quantidade: 0},
+    {nome: "Detergente", preco: 3.99, imagem: "img/detergente.png", quantidade: 0},
+    {nome: "Papel Higiênico", preco: 24.90, imagem: "img/papel_higienico.png", quantidade: 0},
+    {nome: "Banana", preco: 6.79, imagem: "img/banana.png", quantidade: 0}
 ];
 
 let desconto = 0;
+let pagamento = "";
 
 function iniciarMercado() {
 
-    let area = document.getElementById("produtos");
+    const area = document.getElementById("produtos");
 
     area.innerHTML = "";
 
-    for(let i = 0; i < produtos.length; i++){
+    produtos.forEach((produto, i) => {
 
         area.innerHTML += `
         <div class="produto">
 
-            <img src="${produtos[i].imagem}" alt="${produtos[i].nome}">
+            <img src="${produto.imagem}" alt="${produto.nome}">
 
-            <h3>${produtos[i].nome}</h3>
+            <h3>${produto.nome}</h3>
 
             <p class="preco">
-                R$ ${produtos[i].preco.toFixed(2)}
+                R$ ${produto.preco.toFixed(2)}
             </p>
 
             <div class="contador">
@@ -48,7 +49,7 @@ function iniciarMercado() {
                 <button onclick="diminuir(${i})">-</button>
 
                 <span id="qtd${i}">
-                    ${produtos[i].quantidade}
+                    ${produto.quantidade}
                 </span>
 
                 <button onclick="aumentar(${i})">+</button>
@@ -57,123 +58,172 @@ function iniciarMercado() {
 
         </div>
         `;
-    }
+
+    });
 
     atualizarCarrinho();
+
 }
 
-function aumentar(indice){
+function aumentar(i) {
 
-    produtos[indice].quantidade++;
+    produtos[i].quantidade++;
 
-    document.getElementById("qtd" + indice).innerText =
-        produtos[indice].quantidade;
+    document.getElementById("qtd" + i).innerText =
+        produtos[i].quantidade;
 
     atualizarCarrinho();
+
 }
 
-function diminuir(indice){
+function diminuir(i) {
 
-    if(produtos[indice].quantidade > 0){
+    if (produtos[i].quantidade > 0) {
 
-        produtos[indice].quantidade--;
+        produtos[i].quantidade--;
 
-        document.getElementById("qtd" + indice).innerText =
-            produtos[indice].quantidade;
+        document.getElementById("qtd" + i).innerText =
+            produtos[i].quantidade;
 
         atualizarCarrinho();
+
     }
+
 }
 
 function calcularSubtotal(preco, quantidade) {
+
     return preco * quantidade;
+
 }
 
-function atualizarCarrinho(){
+function atualizarCarrinho() {
 
-    let lista = document.getElementById("listaCarrinho");
+    const lista = document.getElementById("listaCarrinho");
 
     lista.innerHTML = "";
 
     let total = 0;
 
-    for(let i = 0; i < produtos.length; i++){
+    produtos.forEach(produto => {
 
-        if(produtos[i].quantidade > 0){
+        if (produto.quantidade > 0) {
 
-            let subtotal = calcularSubtotal(produtos[i].preco, produtos[i].quantidade);
+            const subtotal = calcularSubtotal(produto.preco, produto.quantidade);
 
             total += subtotal;
 
             lista.innerHTML += `
             <li>
-                ${produtos[i].nome}
-                (${produtos[i].quantidade}x)
+                ${produto.nome}
+                (${produto.quantidade}x)
                 - R$ ${subtotal.toFixed(2)}
             </li>
             `;
-        }
-    }
 
-    total = total - (total * desconto / 100);
+        }
+
+    });
+
+    total -= total * desconto / 100;
 
     document.getElementById("total").innerText =
-    total.toFixed(2);
+        total.toFixed(2);
+
 }
 
-function aplicarCupom(){
+function aplicarCupom() {
 
-    let campoCupom = document.getElementById("cupom");
+    const campo = document.getElementById("cupom");
+    const codigo = campo.value;
 
-    let codigo = campoCupom.value.toUpperCase();
+    if (codigo === "DESCONTO10") {
 
-    if(codigo === "DESCONTO10"){
         desconto = 10;
-    }
-    else if(codigo === "DESCONTO67"){
+
+    } else if (codigo === "SIXSEVEN") {
+
         desconto = 67;
-    }
-    else{
+
+    } else if (codigo === "PROMO20") {
+
+        desconto = 20;
+
+    } else {
+
         alert("Cupom inválido!");
-        return; 
+        return;
+
     }
 
-    campoCupom.value = ""; 
+    campo.value = "";
 
     document.getElementById("desconto").innerText =
         "Desconto: " + desconto + "%";
 
     atualizarCarrinho();
+
 }
+document.getElementById("cupom").addEventListener("input", function () {
+    let campo = document.getElementById("cupom");
+    campo.value = campo.value.toUpperCase();
+});
 
-function finalizarCompra() {
-    let forma = obterFormaPagamento();
 
-    if (forma === "") {
-        alert("Selecione uma forma de pagamento!");
-        return;
+    function selecionarPagamento(metodo) {
+
+        pagamento = metodo;
+
+        document.getElementById("formaPagamento").innerText =
+            "Forma de pagamento: " + metodo;
+
     }
 
-    let valorTotal = parseFloat(document.getElementById("total").innerText);
-    alert("Compra finalizada!\nTotal: R$ " + valorTotal + "\nPagamento: " + forma);
-}
+    function obterFormaPagamento() {
 
-let pagamento = "";
+        return pagamento;
 
-function selecionarPagamento(metodo) {
-    pagamento = metodo;
-    document.getElementById("formaPagamento").innerText =
-        "Forma de pagamento: " + pagamento;
-}
+    }
 
-function obterFormaPagamento() {
-    return pagamento;
-}
+    function finalizarCompra() {
 
-function voltarAoTopo(){
-    window.scrollTo({top: 0, behavior: "smooth"});
-}
+        const forma = obterFormaPagamento();
 
-function irParaCarrinho(){
-    document.getElementById("carrinho").scrollIntoView({behavior: "smooth"});
-}
+        if (forma === "") {
+
+            alert("Selecione uma forma de pagamento!");
+
+            return;
+
+        }
+
+        const total =
+            document.getElementById("total").innerText;
+
+        alert(
+            "Compra finalizada!\n\n" +
+            "Total: R$ " + total +
+            "\nPagamento: " + forma
+        );
+
+    }
+
+    window.onload = function () {
+
+        let tema = localStorage.getItem("tema");
+
+        if (tema === "preto") {
+
+            document.body.classList.remove("dark");
+            localStorage.setItem("tema", "branco");
+
+        } else {
+
+            document.body.classList.add("dark");
+            localStorage.setItem("tema", "preto");
+
+        }
+
+        iniciarMercado();
+
+    }
