@@ -2,12 +2,30 @@ body{
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+}
+
+#headerTopo{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#headerTopo img{
+    height: 50px;
+    cursor: pointer;
 }
 
 .container{
     max-width: 1200px;
     margin: auto;
+    padding: 20px;
 }
 
 h1{

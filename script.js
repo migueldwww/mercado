@@ -169,3 +169,11 @@ function selecionarPagamento(metodo) {
 function obterFormaPagamento() {
     return pagamento;
 }
+
+function voltarAoTopo(){
+    window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+function irParaCarrinho(){
+    document.getElementById("carrinho").scrollIntoView({behavior: "smooth"});
+}
