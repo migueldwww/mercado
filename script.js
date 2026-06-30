@@ -1,25 +1,25 @@
 let produtos = [
-    {nome: "Arroz", preco: 27.90, imagem: "img/arroz.png", quantidade: 0},
-    {nome: "Feijão", preco: 9.49, imagem: "img/feijao.png", quantidade: 0},
-    {nome: "Macarrão", preco: 6.99, imagem: "img/macarrao.png", quantidade: 0},
-    {nome: "Leite", preco: 5.89, imagem: "img/leite.png", quantidade: 0},
-    {nome: "Pão", preco: 8.50, imagem: "img/pao.png", quantidade: 0},
-    {nome: "Café", preco: 18.75, imagem: "img/cafe.png", quantidade: 0},
-    {nome: "Açúcar", preco: 4.89, imagem: "img/acucar.png", quantidade: 0},
-    {nome: "Óleo", preco: 8.99, imagem: "img/oleo.png", quantidade: 0},
-    {nome: "Sal", preco: 2.79, imagem: "img/sal.png", quantidade: 0},
-    {nome: "Manteiga", preco: 14.99, imagem: "img/manteiga.png", quantidade: 0},
-    {nome: "Queijo", preco: 21.90, imagem: "img/queijo.png", quantidade: 0},
-    {nome: "Presunto", preco: 16.49, imagem: "img/presunto.png", quantidade: 0},
-    {nome: "Refrigerante", preco: 9.99, imagem: "img/refrigerante.png", quantidade: 0},
-    {nome: "Suco", preco: 7.49, imagem: "img/suco.png", quantidade: 0},
-    {nome: "Biscoito", preco: 5.29, imagem: "img/biscoito.png", quantidade: 0},
-    {nome: "Chocolate", preco: 8.99, imagem: "img/chocolate.png", quantidade: 0},
-    {nome: "Sabonete", preco: 3.49, imagem: "img/sabonete.png", quantidade: 0},
-    {nome: "Shampoo", preco: 17.90, imagem: "img/shampoo.png", quantidade: 0},
-    {nome: "Detergente", preco: 3.99, imagem: "img/detergente.png", quantidade: 0},
-    {nome: "Papel Higiênico", preco: 24.90, imagem: "img/papel_higienico.png", quantidade: 0},
-    {nome: "Banana", preco: 6.79, imagem: "img/banana.png", quantidade: 0}
+    {nome: "Arroz - 5Kg", preco: 27.90, imagem: "img/arroz.png", quantidade: 0},
+    {nome: "Feijão - 1Kg", preco: 9.49, imagem: "img/feijao.png", quantidade: 0},
+    {nome: "Macarrão - 500g", preco: 6.99, imagem: "img/macarrao.png", quantidade: 0},
+    {nome: "Leite - 1L", preco: 5.89, imagem: "img/leite.png", quantidade: 0},
+    {nome: "Pão - un", preco: 8.50, imagem: "img/pao.png", quantidade: 0},
+    {nome: "Café - 1Kg", preco: 18.75, imagem: "img/cafe.png", quantidade: 0},
+    {nome: "Açúcar - 1Kg", preco: 4.89, imagem: "img/acucar.png", quantidade: 0},
+    {nome: "Óleo - 900mL", preco: 8.99, imagem: "img/oleo.png", quantidade: 0},
+    {nome: "Sal - 1Kg", preco: 2.79, imagem: "img/sal.png", quantidade: 0},
+    {nome: "Manteiga - 500g", preco: 14.99, imagem: "img/manteiga.png", quantidade: 0},
+    {nome: "Queijo - 4.2Kg", preco: 35.90, imagem: "img/queijo.png", quantidade: 0},
+    {nome: "Presunto - 3.5Kg", preco: 16.49, imagem: "img/presunto.png", quantidade: 0},
+    {nome: "Refrigerante - 1.5L", preco: 3.99, imagem: "img/refrigerante.png", quantidade: 0},
+    {nome: "Suco - 1L", preco: 7.49, imagem: "img/suco.png", quantidade: 0},
+    {nome: "Biscoito - 125g", preco: 5.29, imagem: "img/biscoito.png", quantidade: 0},
+    {nome: "Chocolate - 215g", preco: 8.99, imagem: "img/chocolate.png", quantidade: 0},
+    {nome: "Sabonete - 80g", preco: 3.49, imagem: "img/sabonete.png", quantidade: 0},
+    {nome: "Shampoo - 250mL", preco: 17.90, imagem: "img/shampoo.png", quantidade: 0},
+    {nome: "Detergente - 500mL", preco: 3.99, imagem: "img/detergente.png", quantidade: 0},
+    {nome: "Papel Higiênico - 4un", preco: 8.90, imagem: "img/papel_higienico.png", quantidade: 0},
+    {nome: "Banana - Dúzia", preco: 6.79, imagem: "img/banana.png", quantidade: 0}
 ];
 
 let desconto = 0;
@@ -141,13 +141,18 @@ function aplicarCupom() {
 
         desconto = 10;
 
-    } else if (codigo === "SIXSEVEN") {
+    } else if (codigo === "15OFF") {
 
-        desconto = 67;
+        desconto = 15;
 
     } else if (codigo === "PROMO20") {
 
         desconto = 20;
+
+    } 
+    else if (codigo === "SIXSEVEN") {
+
+        desconto = 67;
 
     } else {
 
