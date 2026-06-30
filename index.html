@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="iniciarMercado()">
+
+    <div class="container">
+        <h1>Mercado Online</h1>
+        
+        <div id="produtos"></div>
+        
+
+        <div id="carrinho">
+            <h2>Carrinho</h2>
+            <ul id="listaCarrinho"></ul>
+            <input type="text" id="cupom" placeholder="Digite o cupom">
+            <button onclick="aplicarCupom()">Aplicar Cupom</button>
+            <p id="desconto">Desconto: 0%</p>
+            <p>Total: R$ <span id="total">0.00</span></p>
+            <button onclick="finalizarCompra()">Finalizar Compra</button>
+            <button id="pix" onclick="selecionarPagamento('Pix')">Pix</button>
+            <button id="cc"onclick="selecionarPagamento('Cartão de Crédito')">Cartão de Crédito</button>
+            <p id="formaPagamento">Forma de pagamento: não selecionada</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
